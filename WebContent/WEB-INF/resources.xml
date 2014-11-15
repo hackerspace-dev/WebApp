@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<Resource id="myJtaDatabase" type="DataSource">
+		JdbcDriver com.mysql.jdbc.Driver
+		JdbcUrl jdbc:mysql://localhost:3306/web_app_db?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8
+		UserName admin
+		Password admin
+		validationQuery = SELECT 1
+		JtaManaged true
+	</Resource>
+</resources>
