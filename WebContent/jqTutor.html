@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>jQ Tutorial</title>
+	
+	<link rel="stylesheet" href="resources/styl.css">
+	
+	<script type="text/javascript" src="resources/jquery-1.11.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			console.log('abc');	
+			
+			$('td').on('click',function(){
+				$(this).next().css({backgroundColor: "#f88"});
+				$(this).prev().css({backgroundColor: "#8f8"});
+				$(this).closest('tr').css({backgroundColor: "#88f"});
+			});
+			
+			$('body').on('click',function(){
+				$.ajax('rest', {
+					type: 'POST',
+					success: function(data){
+						console.log(data);	
+						var obj = JSON.parse(data);
+						//eval("var obj = "+data);
+						console.log(obj.val);
+						console.log(obj.nazwa);
+					},
+					error: function(data){
+						console.log(data);
+					},
+					data: {nazwa: "abcde"}
+				});
+			});
+			
+		}	
+	);
+	</script>
+
+
+</head>
+<body>
+
+	<table>
+		<tr>
+			<td id="a">A</td><td  id="b">B</td><td id="c">C</td><td>D</td>
+		</tr>
+		<tr class="tab">
+			<td>D</td><td>F</td><td>G</td><td>H</td>
+		</tr>
+		<tr>
+			<td>I</td><td>J</td><td>K</td><td>L</td>
+		</tr>
+	</table>
+
+</body>
+</html>
