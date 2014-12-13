@@ -11,7 +11,7 @@ public class BaseDAO<T> {
 	@PersistenceContext(unitName="WebAppGit")
 	protected EntityManager em;
 	
-	public T get(String id, Class<T> clazz){
+	public T get(Long id, Class<T> clazz){
 		return (T) em.find(clazz, id);
 	}
 	

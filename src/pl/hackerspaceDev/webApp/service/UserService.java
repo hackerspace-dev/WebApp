@@ -17,7 +17,7 @@ public class UserService {
 	private UserDAO userDAO;
 	
 	public User getFirstUser(){
-		return userDAO.get("1");
+		return userDAO.get(1L);
 	}
 	
 	public List<User> getAllUsers(){
@@ -30,7 +30,7 @@ public class UserService {
 	
 	public void removeEvenUsers(){
 		List<User> list = new ArrayList<User>(getAllUsers());
-		list.removeIf(u->Long.parseLong(u.getId())%2==1);
+		list.removeIf(u->u.getId().longValue()%2==1);
 		list.forEach(u->userDAO.delete(u));
 	}
 	

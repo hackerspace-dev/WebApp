@@ -24,9 +24,7 @@ public class HelloBean {
 		String s = "Hello from Bean!\n" + u1.getName();
 		s+= "\n"+df.format(u1.getDate());
 		s+= "\n";
-		
-		
-		
+
 		return s;
 	}
 	

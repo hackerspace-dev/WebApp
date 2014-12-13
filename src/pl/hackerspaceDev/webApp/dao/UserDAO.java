@@ -10,7 +10,7 @@ import pl.hackerspaceDev.webApp.model.User;
 @Stateless
 public class UserDAO extends BaseDAO<User> {
 
-	public User get(String id){
+	public User get(Long id){
 		return get(id, User.class);
 	}
 	
