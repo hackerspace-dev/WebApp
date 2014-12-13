@@ -18,7 +18,7 @@ public class HelloBean {
 	protected EntityManager em;
 
 	public String getHello(){
-		User u1 = em.find(User.class, 1);
+		User u1 = em.find(User.class, 1L);
 		
 		DateFormat df = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		String s = "Hello from Bean!\n" + u1.getName();

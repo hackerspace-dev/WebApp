@@ -2,14 +2,20 @@ package pl.hackerspaceDev.webApp.dao;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.hibernate.SessionFactory;
 
 @SuppressWarnings("all")
 public class BaseDAO<T> {
 
 	@PersistenceContext(unitName="WebAppGit")
 	protected EntityManager em;
+	
+//	@EJB
+//	private SessionFactory factory;
 	
 	public T get(Long id, Class<T> clazz){
 		return (T) em.find(clazz, id);
