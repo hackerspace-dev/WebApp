@@ -16,13 +16,8 @@ import javax.persistence.TemporalType;
 @Table(name="users", indexes = {
 		@Index(columnList="name", name="aaa", unique=true)
 })
-
-public class User implements Serializable {
+public class User extends BaseEntity {
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
@@ -30,14 +25,6 @@ public class User implements Serializable {
 	private String name;
 
 	public User() {
-	}
-
-	public Long getId() {
-		return this.id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public Date getDate() {

@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import org.hibernate.Session;
+import org.hibernate.jpa.HibernateEntityManagerFactory;
+
 import pl.hackerspaceDev.webApp.model.User;
 
 @SuppressWarnings("all")
@@ -19,8 +22,14 @@ public class UserDAO extends BaseDAO<User> {
 	}
 	
 	public User getUserByName(String name){
+		
+//		HibernateEntityManagerFactory hemf = (HibernateEntityManagerFactory)em.getEntityManagerFactory();
+//		Session s = hemf.getSessionFactory().getCurrentSession();
+//		
+//		System.out.println(s.createCriteria(User.class).list());
+		
 		return (User) em
-				.createQuery("SELECT o FROM User o WHERE o.name=:NAME")
+				.createQuery("FROM User WHERE name=:NAME")
 				.setParameter("NAME", name)
 				.getSingleResult();
 	}

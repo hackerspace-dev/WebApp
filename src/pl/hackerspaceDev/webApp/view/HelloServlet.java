@@ -1,6 +1,7 @@
 package pl.hackerspaceDev.webApp.view;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pl.hackerspaceDev.webApp.model.User;
 import pl.hackerspaceDev.webApp.service.HelloBean;
 import pl.hackerspaceDev.webApp.service.UserService;
 
@@ -39,6 +41,14 @@ public class HelloServlet extends HttpServlet {
 		System.out.println(s);
 		response.getWriter().println("Hello from servlet! ");
 		response.getWriter().println(s);
+		
+		String name = request.getParameter("name");
+		userService.createUserWithName(name);
+		
+		
+		
+		
+		response.getWriter().println(userService.getEla());
 		
 		
 	}
