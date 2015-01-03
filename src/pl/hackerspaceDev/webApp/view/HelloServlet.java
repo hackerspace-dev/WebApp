@@ -35,7 +35,7 @@ public class HelloServlet extends HttpServlet {
 		s+= "\n"+userService.getFirstUser().getName();
 		s+= "\n"+userService.getAllUsers();
 		
-		userService.removeEvenUsers();
+		//userService.removeEvenUsers();
 		
 		System.out.println("Hello from servlet!");
 		System.out.println(s);

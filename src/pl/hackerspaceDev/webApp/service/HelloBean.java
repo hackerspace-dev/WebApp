@@ -3,22 +3,24 @@ package pl.hackerspaceDev.webApp.service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import pl.hackerspaceDev.webApp.dao.UserDAO;
 import pl.hackerspaceDev.webApp.model.User;
 
 @Stateless
 public class HelloBean {
 
-	@PersistenceContext(unitName="WebAppGit")
-	protected EntityManager em;
+	@EJB
+	UserDAO userDAO;
 
 	public String getHello(){
-		User u1 = em.find(User.class, 1L);
+		User u1 = userDAO.get(1L); //   em.find(User.class, 1L);
 		
 		DateFormat df = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 		String s = "Hello from Bean!\n" + u1.getName();

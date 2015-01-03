@@ -3,6 +3,7 @@ package pl.hackerspaceDev.webApp.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class User extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	
+	@Column(length=64)
 	private String name;
 
 	public User() {

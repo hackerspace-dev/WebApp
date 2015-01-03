@@ -3,9 +3,15 @@ package pl.hackerspaceDev.webApp.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.NoResultException;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.jpa.HibernateEntityManagerFactory;
+import org.hsqldb.jdbc.JDBCConnection;
 
 import pl.hackerspaceDev.webApp.model.User;
 
@@ -23,15 +29,19 @@ public class UserDAO extends BaseDAO<User> {
 	
 	public User getUserByName(String name){
 		
-//		HibernateEntityManagerFactory hemf = (HibernateEntityManagerFactory)em.getEntityManagerFactory();
-//		Session s = hemf.getSessionFactory().getCurrentSession();
-//		
-//		System.out.println(s.createCriteria(User.class).list());
-		
-		return (User) em
-				.createQuery("FROM User WHERE name=:NAME")
-				.setParameter("NAME", name)
-				.getSingleResult();
+//		Session session = em.unwrap(Session.class);
+//		Criteria cUser = session.createCriteria(User.class);
+//		cUser.add(Restrictions.eq("id", 1L))
+//			.addOrder(Order.asc("name")).list();
+
+		try {
+			return (User) em
+					.createQuery("FROM User WHERE name=:NAME")
+					.setParameter("NAME", name)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 	
 	
