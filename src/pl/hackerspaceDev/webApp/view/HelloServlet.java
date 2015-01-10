@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import pl.hackerspaceDev.webApp.model.User;
 import pl.hackerspaceDev.webApp.service.HelloBean;
 import pl.hackerspaceDev.webApp.service.UserService;
@@ -19,6 +21,8 @@ import pl.hackerspaceDev.webApp.service.UserService;
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private static Logger logger = Logger.getLogger(HelloServlet.class);
+	
 	@EJB
 	HelloBean helloBean;//=new HelloBean();
 	
@@ -35,19 +39,28 @@ public class HelloServlet extends HttpServlet {
 		s+= "\n"+userService.getFirstUser().getName();
 		s+= "\n"+userService.getAllUsers();
 		
+		//logTest
+		if(logger.isTraceEnabled()){
+			logger.trace("Œlad wywo³añ");
+		}
+		if(logger.isDebugEnabled()){
+			logger.debug("Podgl¹d Wartoœci");
+		}
+		logger.info("Informacje");
+		logger.warn("Ostrze¿enia");
+		logger.error("Wyj¹tek");
+		logger.fatal("B³¹d niszcz¹cy");
+		
 		//userService.removeEvenUsers();
 		
-		System.out.println("Hello from servlet!");
-		System.out.println(s);
+		logger.info("Hello from servlet!");
+		logger.info(s);
 		response.getWriter().println("Hello from servlet! ");
 		response.getWriter().println(s);
 		
 		String name = request.getParameter("name");
 		userService.createUserWithName(name);
-		
-		
-		
-		
+
 		response.getWriter().println(userService.getEla());
 		
 		

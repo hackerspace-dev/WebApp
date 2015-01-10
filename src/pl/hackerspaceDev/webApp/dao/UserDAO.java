@@ -5,14 +5,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.NoResultException;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.jpa.HibernateEntityManagerFactory;
-import org.hsqldb.jdbc.JDBCConnection;
-
 import pl.hackerspaceDev.webApp.model.User;
 
 @SuppressWarnings("all")
