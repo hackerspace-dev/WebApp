@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="resources/jquery-1.11.1.min.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+			console.log('abc');	
+			var canvas = $('#cnv').get(0);
+			var ctx = canvas.getContext("2d");
+			ctx.strokeStyle = "#FF0000";
+			
+			ctx.moveTo(0,0);
+			ctx.lineTo(200,100);
+			ctx.stroke();
+			
+		});
+	</script>
+	
+</head>
+<body>
+
+<canvas id="cnv" height="600" width="800"/>
+
+
+
+</body>
+</html>
