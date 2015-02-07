@@ -16,12 +16,11 @@ import org.apache.log4j.Logger;
 import pl.hackerspaceDev.webApp.model.User;
 import pl.hackerspaceDev.webApp.service.HelloBean;
 import pl.hackerspaceDev.webApp.service.UserService;
+import pl.hackerspaceDev.webApp.util.Log;
 
 @WebServlet({ "/HelloServlet", "/Hello", "/hello" })
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	private static Logger logger = Logger.getLogger(HelloServlet.class);
 	
 	@EJB
 	HelloBean helloBean;//=new HelloBean();
@@ -40,21 +39,21 @@ public class HelloServlet extends HttpServlet {
 		s+= "\n"+userService.getAllUsers();
 		
 		//logTest
-		if(logger.isTraceEnabled()){
-			logger.trace("Œlad wywo³añ");
+		if(Log.isTraceEnabled()){
+			Log.trace("Œlad wywo³añ");
 		}
-		if(logger.isDebugEnabled()){
-			logger.debug("Podgl¹d Wartoœci");
+		if(Log.isDebugEnabled()){
+			Log.debug("Podgl¹d Wartoœci");
 		}
-		logger.info("Informacje");
-		logger.warn("Ostrze¿enia");
-		logger.error("Wyj¹tek");
-		logger.fatal("B³¹d niszcz¹cy");
+		Log.info("Informacje");
+		Log.warn("Ostrze¿enia");
+		Log.error("Wyj¹tek");
+		Log.fatal("B³¹d niszcz¹cy");
 		
 		//userService.removeEvenUsers();
 		
-		logger.info("Hello from servlet!");
-		logger.info(s);
+		Log.info("Hello from servlet!");
+		Log.info(s);
 		response.getWriter().println("Hello from servlet! ");
 		response.getWriter().println(s);
 		
