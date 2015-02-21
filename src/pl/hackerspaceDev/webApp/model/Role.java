@@ -14,46 +14,33 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="users", indexes = {
-		@Index(columnList="name", name="aaa", unique=true)
-})
-public class User extends BaseEntity {
+@Table(name="roles")
+public class Role extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
-	
 	@Column(length=64)
 	private String name;
 	
 	@Column(length=64)
-	private String password;
+	private String role;
 
-	public User() {
-	}
-
-	public Date getDate() {
-		return this.date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
+	public Role() {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getRole() {
+		return role;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override

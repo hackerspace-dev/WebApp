@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<form method="POST" action="j_security_check" name="form">
+<table border="0" style="margin-left:0.25em;">
+ <tr>
+   <td><label>User Name</label><font color="red">*</font></td>
+   <td><input type="text" name="j_username" maxlength="20" style="width:150px;"/></td>
+   <td>&nbsp;</td>
+  </tr>
+  <tr>
+   <td><label>User Password</label><font color="red">*</font></td>
+   <td><input type="password" name="j_password" maxlength="20" style="width:150px;"/></td>
+   <td><input type="submit" value="Log In"/></td>
+  </tr>
+</table>
+</form>
+
+<script type="text/javascript">
+  document.form.j_username.focus();
+</script>
+
+
+
+</body>
+</html>

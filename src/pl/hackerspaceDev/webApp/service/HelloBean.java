@@ -3,6 +3,7 @@ package pl.hackerspaceDev.webApp.service;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
@@ -25,6 +26,7 @@ public class HelloBean {
 	@EJB
 	UserDAO userDAO;
 
+	//@RolesAllowed({"admin"})
 	public String getHello(){
 		
 		Log.info("Wywo³ano getHello");

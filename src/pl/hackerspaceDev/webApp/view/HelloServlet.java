@@ -18,7 +18,7 @@ import pl.hackerspaceDev.webApp.service.HelloBean;
 import pl.hackerspaceDev.webApp.service.UserService;
 import pl.hackerspaceDev.webApp.util.Log;
 
-@WebServlet({ "/HelloServlet", "/Hello", "/hello" })
+@WebServlet({ "/HelloServlet", "/Hello", "/hello", "/admin/hello" })
 public class HelloServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -54,6 +54,7 @@ public class HelloServlet extends HttpServlet {
 		
 		Log.info("Hello from servlet!");
 		Log.info(s);
+		response.getWriter().println("path: "+request.getRequestURI());
 		response.getWriter().println("Hello from servlet! ");
 		response.getWriter().println(s);
 		
