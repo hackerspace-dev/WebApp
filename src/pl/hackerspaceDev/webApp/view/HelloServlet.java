@@ -1,9 +1,11 @@
 package pl.hackerspaceDev.webApp.view;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.Date;
 
 import javax.ejb.EJB;
+import javax.ejb.EJBContext;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,20 +37,9 @@ public class HelloServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String s = helloBean.getHello();
 		
-		s+= "\n"+userService.getFirstUser().getName();
+		//s+= "\n"+userService.getFirstUser().getName();
 		s+= "\n"+userService.getAllUsers();
 		
-		//logTest
-		if(Log.isTraceEnabled()){
-			Log.trace("Œlad wywo³añ");
-		}
-		if(Log.isDebugEnabled()){
-			Log.debug("Podgl¹d Wartoœci");
-		}
-		Log.info("Informacje");
-		Log.warn("Ostrze¿enia");
-		Log.error("Wyj¹tek");
-		Log.fatal("B³¹d niszcz¹cy");
 		
 		//userService.removeEvenUsers();
 		

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,10 +24,13 @@ public class Role extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	
 	@Column(length=64)
+	private String name;
+	
+	@Column(length=64)
 	private String role;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(referencedColumnName="name", name="name")
+	//@JoinColumn(referencedColumnName="id")//, name="user_id", columnDefinition="VARCHAR(64)")
 	private User user;
 
 	public Role() {
@@ -47,8 +51,14 @@ public class Role extends BaseEntity {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	@Override
 	public String toString() {
