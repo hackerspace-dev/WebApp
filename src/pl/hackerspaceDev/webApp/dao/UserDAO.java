@@ -26,6 +26,8 @@ public class UserDAO extends BaseDAO<User> {
 //		cUser.add(Restrictions.eq("id", 1L))
 //			.addOrder(Order.asc("name")).list();
 
+		
+		
 		try {
 			return (User) em
 					.createQuery("FROM User WHERE name=:NAME")

@@ -3,12 +3,16 @@ package pl.hackerspaceDev.webApp.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,22 +21,15 @@ import javax.persistence.TemporalType;
 @Table(name="roles")
 public class Role extends BaseEntity {
 	private static final long serialVersionUID = 1L;
-
-	@Column(length=64)
-	private String name;
 	
 	@Column(length=64)
 	private String role;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(referencedColumnName="name", name="name")
+	private User user;
 
 	public Role() {
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getRole() {
@@ -43,10 +40,23 @@ public class Role extends BaseEntity {
 		this.role = role;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
 	@Override
 	public String toString() {
-		return name;
+		return getUser().getName();
 	}
+
+
+	
 	
 	
 
