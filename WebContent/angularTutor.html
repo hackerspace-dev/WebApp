@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="resources/bootstrap.min.css">
+	<script type="text/javascript" src="resources/jquery-1.11.1.min.js"></script>
+	<script src="resources/angular.min.js"></script>
+	<!--  <script src="resources/angular-data-serialisation-plugin.js"/>  -->
+	<title>Angular tutorial</title>
+</head>
+<body ng-app="restApp" ng-controller="restCtrl">
+
+	v5<br/>
+	Nazwa: {{nazwa}}<br/>
+	Val: {{val}}
+	<br/>
+	<input ng-show="val" type="button" value="Plus Jeden" ng-click="plusJeden()" class="btn btn-success">
+
+<script>
+	var app = angular.module('restApp', []);
+	app.controller('restCtrl', function($scope, $http) {
+		
+		$http.post('rest?parametr=wartosc', {nazwa: 'abcdef'}).
+		  success(function(data, status, headers, config) {
+				console.log(data);	
+				console.log(data.val);
+				console.log(data.nazwa);
+				$scope.val = data.val;
+				$scope.nazwa = data.nazwa;
+		  }).
+		  error(function(data, status, headers, config) {
+			  console.log(data);
+		  });
+		
+		$scope.plusJeden = function(){
+			$scope.val ++;
+		}
+		
+	});
+</script>
+
+</body>
+</html>
